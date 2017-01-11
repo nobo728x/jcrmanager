@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="SPTJCRManager" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+  <display-name>SPT JCR Manager Application</display-name>
+
+  <listener>
+    <listener-class>com.sptci.jcr.webui.listener.SessionListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>servlet</servlet-name>
+    <servlet-class>com.sptci.echo.http.Servlet</servlet-class>
+    <init-param>
+      <param-name>applicationInstance</param-name>
+      <param-value>com.sptci.echo.Application</param-value>
+    </init-param>
+    <init-param>
+      <param-name>contentPane</param-name>
+      <param-value>com.sptci.jcr.webui.ContentArea</param-value>
+    </init-param>
+    <init-param>
+      <param-name>styleSheet</param-name>
+      <param-value>com.sptci.jcr.webui.style.StyleSheet</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>com.sptci.echo.http.LogoutServlet</servlet-class>
+    <init-param>
+      <description>
+        The page to which the application should send a redirect to after
+        logging user off the current session.
+      </description>
+      <param-name>redirectUrl</param-name>
+      <param-value>index.jhtml</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>servlet</servlet-name>
+    <url-pattern>/index.jhtml</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>
+
+  <welcome-file-list>
+    <welcome-file>index.jhtml</welcome-file>
+  </welcome-file-list>
+
+  <!--
+  <resource-ref>
+    <description>SPT JCR</description>
+    <res-ref-name>jcr/spt</res-ref-name>
+    <res-type>javax.jcr.Repository</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  -->
+</web-app>

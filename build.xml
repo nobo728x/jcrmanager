@@ -1,0 +1,109 @@
+<?xml version='1.0'?>
+
+<project name='JCR Manager' default='deploy' basedir='.' xmlns:ivy='antlib:org.apache.ivy.ant'>
+
+  <property environment='env' />
+  <property file='ant.properties' />
+
+  <patternset id='fileset.webapp.resources'>
+    <include name='**/*properties' />
+    <include name='**/*xml' />
+    <include name='**/CreateTestNodes.html' />
+    <exclude name='**/web.xml' />
+    <exclude name='**/context.xml' />
+  </patternset>
+
+  <target name='clean'
+          description='Clears all generated files, including build directories, distributables, and documentation.'>
+    <delete dir='${dir.build}' />
+    <delete dir='${dir.deploy}' />
+    <delete dir='${dir.docs}' />
+  </target>
+
+  <path id='compile.classpath'>
+    <fileset dir='${dir.lib}'>
+      <include name='*.jar'/>
+      <exclude name='junit*'/>
+    </fileset>
+  </path>
+
+  <target name='compile' depends='init-ivy, resolve'
+          description='Compiles the application and arranges resources into a web archive hierarchy.'>
+    <mkdir dir='${dir.build}' />
+    <mkdir dir='${dir.deploy}' />
+
+    <javac
+      destdir='${dir.build}'
+      debug='${debug}' deprecation='yes'
+      source='${jdk.version}' target='${jdk.version}'
+      optimize='on' includeantruntime='yes'>
+      <classpath>
+        <path refid='compile.classpath' />
+      </classpath>
+      <src path='${dir.src.app}'/>
+      <include name='com/sptci/**'/>
+    </javac>
+  </target>
+
+  <target name='jar' depends='compile'
+    description='Builds jar archives with all compiled classes for application.'>
+    <delete>
+      <fileset dir='${dir.deploy}' includes='*.jar'/>
+    </delete>
+
+    <jar jarfile='${dir.deploy}/${appjar}' basedir='${dir.build}' includes='com/sptci/**'>
+    </jar>
+  </target>
+
+  <target name='war' depends='jar'
+    description='Builds a web archive of the application.'>
+
+    <delete file='${dir.deploy}/${appwar}' />
+
+    <war destfile='${dir.deploy}/${appwar}'
+      webxml='${dir.config}/web.xml'>
+      <fileset dir='${dir.config}/web' />
+      <lib dir='${dir.lib}'>
+        <exclude name='junit*.jar'/>
+        <exclude name='servlet-api*.jar'/>
+      </lib>
+      <lib file='${dir.deploy}/${appjar}' />
+      <metainf dir='${dir.config}'>
+        <include name='context.xml' />
+      </metainf>
+      <classes dir='${dir.config}'>
+       	<patternset refid='fileset.webapp.resources' />
+      </classes>
+    </war>
+  </target>
+
+  <target name='deploy' depends='war'
+    description='Deploy the web application archives to the application server'>
+    <copy todir='${dir.tomcat.apps}' file='${dir.deploy}/${appwar}' />
+  </target>
+
+
+  <!-- automatically configure download and install ivy if required. -->
+  <condition property='ivy.home' value='${env.IVY_HOME}'>
+    <isset property='env.IVY_HOME' />
+  </condition>
+
+  <target name='download-ivy' unless='offline'>
+    <mkdir dir='${ivy.jar.dir}'/>
+    <get src='http://repo2.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar'
+         dest='${ivy.jar.file}' usetimestamp='true'/>
+  </target>
+
+  <target name='init-ivy' depends='download-ivy'>
+    <path id='ivy.lib.path'>
+      <fileset dir='${ivy.jar.dir}' includes='*.jar'/>
+    </path>
+    <taskdef resource='org/apache/ivy/ant/antlib.xml'
+                 uri='antlib:org.apache.ivy.ant' classpathref='ivy.lib.path'/>
+  </target>
+
+  <target name="resolve" description="--> retrieve dependencies with ivy">
+    <ivy:retrieve />
+  </target>
+
+</project>

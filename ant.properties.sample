@@ -1,0 +1,26 @@
+project.name                      SPT JCR Manager
+
+debug                             yes
+jdk.version                       1.5
+jackrabbit.version                2.4.3
+
+ivy.home                          ${user.home}/.ivy2
+ivy.jar.dir                       ${ivy.home}/lib
+ivy.jar.file                      ${ivy.jar.dir}/ivy.jar
+ivy.install.version               2.2.0
+
+dir.lib                           lib
+dir.tomcat                        /usr/local/apache-tomcat-7.0.23
+
+dir.docs                          docs
+dir.src                           src
+dir.src.app                       ${dir.src}/main/java
+dir.src.test                      ${dir.src}/test/java
+dir.config                        config
+dir.build                         build
+dir.deploy                        deploy
+
+appjar                            jcrviewer-app.jar
+appwar                            jcrviewer.war
+
+dir.tomcat.apps                   ${dir.tomcat}/webapps

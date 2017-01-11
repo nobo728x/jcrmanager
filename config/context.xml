@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+  <Manager pathname='' />
+  <!--
+  <Resource configFilePath='/var/data/jcr/repository.xml'
+            factory='org.apache.jackrabbit.core.jndi.BindableRepositoryFactory'
+            name='jcr/spt' repHomeDir='/var/data/jcr'
+            type='javax.jcr.Repository'
+            auth='Container' />
+            -->
+</Context>

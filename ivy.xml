@@ -1,0 +1,95 @@
+<ivy-module version='2.2'>
+  <info organisation='com.sptci' module='sptjcrmanager'/>
+
+  <dependencies>
+    <dependency org="commons-fileupload" name="commons-fileupload" rev="1.2.2" >
+      <artifact name="commons-fileupload" type="jar" />
+    </dependency>
+    <dependency org="org.codehaus.groovy" name="groovy-all" rev="1.8.3" >
+      <artifact name="groovy-all" type="jar" />
+    </dependency>
+    <dependency org="net.sf.mime-util" name="mime-util" rev="1.2" >
+      <artifact name="mime-util" type="jar" />
+    </dependency>
+    <dependency org="xpp3" name="xpp3" rev="1.1.4c" >
+      <artifact name="xpp3" type="jar" />
+    </dependency>
+
+    <dependency org="org.apache.jackrabbit" name="jackrabbit-core" rev="${jackrabbit.version}" >
+      <artifact name="jackrabbit-core" type="jar" />
+    </dependency>
+    <dependency org="org.apache.jackrabbit" name="jackrabbit-jcr-client" rev="${jackrabbit.version}" >
+      <artifact name="jackrabbit-jcr-client" type="jar" />
+    </dependency>
+    <dependency org="org.apache.jackrabbit" name="jackrabbit-jcr-rmi" rev="${jackrabbit.version}" >
+      <artifact name="jackrabbit-jcr-rmi" type="jar" />
+    </dependency>
+    <!--
+    <dependency org="org.apache.jackrabbit" name="jackrabbit-jca" rev="${jackrabbit.version}" >
+      <artifact name="jackrabbit-jca" type="rar" />
+    </dependency>
+    -->
+
+    <exclude org="antlr" module="antlr" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="asm" module="asm" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="bsf" module="bsf" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="myfaces" module="myfaces-api" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="javax.activation" module="activation" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="javax.portlet" module="portlet-api" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="javax.ws.rs" module="jsr311-api" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.jdom" module="jaxen" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.jdom" module="jaxen-core" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.jdom" module="jaxen-jdom" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.jdom" module="saxpath" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="ws-commons-java5" module="ws-commons-java5" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.ws.commons" module="ws-commons-java5" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="commons-beanutils" module="commons-beanutils" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="commons-codec" module="commons-codec" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="commons-digester" module="commons-digester" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="commons-logging" module="commons-logging" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="commons-logging" module="commons-logging-api" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="commons-cli" module="commons-cli" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="xml-apis" module="xml-apis" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="xerces" module="xercesImpl" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="xerces" module="xmlParserAPIs" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="xalan" module="xalan" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="xalan" module="serializer" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="jaxen" module="jaxen" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="junit" module="junit" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.fusesource.jansi" module="jansi" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="oro" module="oro" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="rhino" module="js" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="xml-resolver" module="xml-resolver" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.geronimo.specs" module="*" type="*" ext="*" conf="" matcher="regexp" />
+    <exclude org="org.apache.abdera" module="*" type="*" ext="*" conf="" matcher="regexp" />
+    <exclude org="org.apache.ant" module="ant" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.ant" module="ant-antlr" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.ant" module="ant-junit" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.ant" module="ant-launcher" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.ws.commons.axiom" module="axiom-impl" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.santuario" module="xmlsec" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.ws.security" module="wss4j" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.cxf" module="cxf-bundle" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.neethi" module="neethi" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.codehaus.jra" module="jra" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.codehaus.jettison" module="jettison" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.springframework" module="*" type="*" ext="*" conf="" matcher="regexp" />
+    <exclude org="org.codehaus.woodstox" module="wstx-asl" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="com.sun.xml.bind" module="*" type="*" ext="*" conf="" matcher="regexp" />
+    <exclude org="org.mortbay.jetty" module="*" type="*" ext="*" conf="" matcher="regexp" />
+    <exclude org="com.sun.xml.messaging.saaj" module="saaj-impl" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="com.sun.xml.fastinfoset" module="*" type="*" ext="*" conf="" matcher="regexp" />
+    <exclude org="org.bouncycastle" module="bcprov-jdk15" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.livetribe" module="livetribe-jsr223" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.codehaus.jsr166-mirror" module="jsr166y" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.codehaus.jsr166-mirror" module="extra166y" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.codehaus.gpars" module="gpars" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="log4j" module="log4j" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="javax.servlet" module="jsp-api" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="javax.servlet.jsp" module="jsp-api" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="jline" module="jline" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="org.apache.jackrabbit" module="jackrabbit-jcr-tests" type="*" ext="*" conf="" matcher="exact" />
+    <exclude org="portlet-api" module="portlet-api" type="*" ext="*" conf="" matcher="exact" />
+  </dependencies>
+
+</ivy-module>
